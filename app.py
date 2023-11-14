@@ -50,5 +50,7 @@ data_preparada=data_preparada.reindex(columns=variables,fill_value=0)
 data_preparada.head()
 
 #Hacemos la predicción
-Y_fut = model.predict(data_preparada)
-print(labelencoder.inverse_transform(Y_fut))
+if st.button('Predict'):
+    Y_fut = model.predict(data_preparada)
+    encod=labelencoder.inverse_transform(Y_fut)
+    st.write('Prediction: ', encod)
